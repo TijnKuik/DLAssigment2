@@ -1,4 +1,4 @@
-
+import math
 class Value:
     """ stores a single scalar value and its gradient """
 
@@ -48,6 +48,11 @@ class Value:
         def _backward():
             self.grad += (out.data > 0) * out.grad
         out._backward = _backward
+
+        return out
+    
+    def sigmoid(self):
+        out = Value(1 / (1 + (math.e)**(-1*self.data))) 
 
         return out
 
